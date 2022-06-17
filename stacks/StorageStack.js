@@ -12,7 +12,6 @@ export default class StorageStack extends sst.Stack {
 
     // Public references to the DynamoDB Tables
     importsTable;
-    cardsTable;
 
     databaseName = "Imports";
 
@@ -46,7 +45,7 @@ export default class StorageStack extends sst.Stack {
             }
         ];
 
-        this.assetsBucket = new sst.Bucket(this, "Assets", {
+        this.assetsBucket = new sst.Bucket(this, "DAMAssets", {
             s3Bucket: {
                 autoDeleteObjects: true,
                 removalPolicy: cdk.RemovalPolicy.DESTROY,
@@ -57,7 +56,7 @@ export default class StorageStack extends sst.Stack {
         });
 
         // Create the Imports DynamoDB table
-        this.organizationsTable = new sst.Table(this, "Imports", {
+        this.importsTable = new sst.Table(this, "Imports", {
             fields: {
                 id: sst.TableFieldType.STRING,
             },
@@ -68,12 +67,7 @@ export default class StorageStack extends sst.Stack {
         });
 
 
-        this.addOutputs({
-            Table: this.importsTable,
-            DatabaseName: this.databaseName,
-            S3BucketName: this.assetsBucket.bucketName,
-            S3BucketARN: this.assetsBucket.bucketArn,
-        });
+
 
     }
 }

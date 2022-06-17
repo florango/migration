@@ -1,0 +1,6 @@
+{
+  "test-test-mig-api": {
+    "databaseName": "Imports",
+    "APIEndpoint": "https://6aol16ejhj.execute-api.us-west-1.amazonaws.com"
+  }
+}

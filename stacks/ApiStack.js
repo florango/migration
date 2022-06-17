@@ -28,7 +28,9 @@ export default class ApiStack extends sst.Stack {
                 },
             },
             routes: {
-                'GET    /cards/{orgId}/{cardId}': 'api/functions/lambda.spreadsheetImporter',
+                'GET    /import': 'api/functions/lambda.spreadsheetImporter',
+                'POST    /importassets': 'api/functions/lambda.tableReader',
+                'POST    /importasset': 'api/functions/lambda.assetImporter',
             },
         });
 
